@@ -23,7 +23,7 @@
         $response['infoAgenda'][$i]['end_date']=$fila['end_date'];
         $response['infoAgenda'][$i]['start_hour']=$fila['start_hour'];
         $response['infoAgenda'][$i]['end_hour']=$fila['hora_llegada'];
-
+        
         $i++;
       }
       $response['msg'] = "OK";
