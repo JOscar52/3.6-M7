@@ -6,7 +6,6 @@ session_start();
 
 if (isset($_SESSION['user'])) {
   $con = new ConectorBD('localhost', 't_selector', '1555');
-  //if ($con->initConexion('transporte_db')=='OK') {
   if ($con->initConexion('m7-php')=='OK') {
     /*
     $resultado = $con->consultar(['ciudades'],['id'], "WHERE nombre ='" .$_POST['ciudad_origen']."'");
