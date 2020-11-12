@@ -35,8 +35,8 @@ class Login {
       type: 'POST',
       success: function(php_response){
         alert("success conexión "+php_response.conexion);
-        alert("success acceso VVVV "+php_response.acceso);
-        alert("mensaje 2 ****** "+php_response.msg2);
+        //alert("success acceso VVVV "+php_response.acceso);
+        //alert("mensaje 2 ****** "+php_response.msg2);
         if (php_response.acceso == "concedido") {
           alert("voy a main.html mensaje OK "+php_response.msg);
           window.location.href = 'main.html';
