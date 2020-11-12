@@ -7,6 +7,11 @@ session_start();
 if (isset($_SESSION['user'])) {
   $con = new ConectorBD('localhost', 't_selector', '1555');
   if ($con->initConexion('m7-php')=='OK') {
+    $resultado = $con->consultar(['usuarios'], ['nombre', 'id'], "WHERE email ='".$_SESSION['user']."'");
+    $fila = $resultado->fetch_assoc();
+    $response['nombre']=$fila['nombre'];
+    $response['id']=$fila['id'];
+
     /*
     $resultado = $con->consultar(['ciudades'],['id'], "WHERE nombre ='" .$_POST['ciudad_origen']."'");
     $fila = $resultado->fetch_assoc();
@@ -24,6 +29,7 @@ if (isset($_SESSION['user'])) {
     $data['end_date'] = "'".$_POST['end_date']."'";
     $data['start_hour'] = "'".$_POST['start_hour']."'";
     $data['hora_llegada'] = "'".$_POST['end_hour']."'";
+    $data['fk_usuario'] = "'".$response['id']."'";
 
     if ($con->insertData('agenda', $data)) {
       $response['msg']= 'OK';
