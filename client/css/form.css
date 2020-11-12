@@ -15,7 +15,8 @@
   margin-top: 10px;
 }
 .primera h1{
-  color: #9C550E;
+  /*color: #9C550E;*/
+  color: black;
 }
 .select-label{
   color: #000;
