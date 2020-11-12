@@ -19,9 +19,10 @@
     if ($resultado_consulta->num_rows != 0) {
       $fila = $resultado_consulta->fetch_assoc();
       $paw=$fila['psw'];
+      //$pas= password_verify($_POST['passw'], $fila['psw']);
       //$response['msg2']="m7 aaaaa paw= ".$paw." ".$use2." ".$_POST['password'];
 
-      /*if (password_verify($_POST['password'], $fila['psw'])) {*/
+      //if (password_verify($_POST['password'], $fila['psw'])) {
       if ($_POST['password']==$fila['psw']) {
         $response['acceso'] = 'concedido';
         session_start();
