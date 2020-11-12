@@ -1,5 +1,29 @@
 
+$(function(){
+  $('#logout').click(function(){
+    logoutRequest();
+  })
 
+})
+
+function logoutRequest(){
+  $.ajax({
+    url: '../server/logout.php',
+    dataType: "text",
+    cache: false,
+    processData: false,
+    contentType: false,
+    type: 'GET',
+    success: function(php_response){
+      window.location.href = 'index.html';
+    },
+    error: function(){
+      alert("error en la comunicación con el servidor");
+    }
+  })
+}
+
+/******************************************/
 alert("apps.js");
 class EventsManager {
     constructor() {
