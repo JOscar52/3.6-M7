@@ -2,12 +2,12 @@
  alert("estoy en form.js");
 $(function(){
     alert("FEcha");
-/*  $('select').material_select();
+  $('select').material_select();
   $('.datepicker').pickadate({
     selectMonths: true,
     selectYears: 50,
     format: 'yyyy-mm-dd'
-  });*/
+  });
 
 
   $('#formulario').submit(function(event){
@@ -86,15 +86,16 @@ var password="password";
     type: 'POST',
     success: function(php_response){
       //alert("php_response "+'php_response');
-      alert("conexion "+php_response.con);
-      /*if (php_response.msg == "exito en la inserción") {
-        window.location.href = 'welcome.html';
+      alert("conexion "+php_response.con+" "+php_response.con);
+      //alert("conexion "+php_response.con+" "+php_response.cond);
+      if (php_response.msg == "exito en la inserción") {
+        window.location.href = 'index.html';
       }else {
         alert(php_response.msg);
-      }*/
+      }
     },
     error: function(){
-      alert("php_response "+php_response.msg);
+      alert("php_response MIO "+php_response.msg);
       alert("error en la comunicación con el servidor AAAA");
     }
   })
