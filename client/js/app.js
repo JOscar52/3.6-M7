@@ -29,7 +29,7 @@ class EventsManager {
               $.each(data.infoAgenda, function(key, value){
                 $('#table-body').append(`
                   <tr>
-                    <td>Dato de escritura</td>
+                    <td>    </td>
                     <td>${value['titulo']} </td>
                     <td>${value['start_date']}</td>
                     <td>${value['end_date']}</td>
@@ -127,7 +127,10 @@ class EventsManager {
           alert("data data "+data);
             alert("data.msg *** "+data.msg);
           if (data.msg=="OK") {
-            alert('Se ha añadido el evento exitosamente')
+            //this.obtenerDataInicial();
+            alert("abrir ventana main.html");
+            window.location.href = 'main.html';
+            alert('Se ha añadido el evento exitosamente aquí estoy');
             if (document.getElementById('allDay').checked) {
               $('.calendario').fullCalendar('renderEvent', {
                 title: $('#titulo').val(),
