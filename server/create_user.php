@@ -9,8 +9,9 @@
   $data['email'] = "'".$_POST['email']."'";
   $data['experiencia'] = "'".$_POST['experiencia']."'";
   //$data['psw'] = "'".password_hash($_POST['contrasena'], PASSWORD_DEFAULT)."'";
+  $data['psw'] = "'".password_hash($_POST['contrasena'], PASSWORD_DEFAULT)."'";
 
-  $data['psw'] = "'".$_POST['contrasena']."'";
+  //$data['psw'] = "'".$_POST['contrasena']."'";
 
   if ($_POST['automovil'] == 'si' && $_POST['bus'] == 'si') {
     $data['tipo_vehiculo']= "'".'automovil y bus'."'";
@@ -29,23 +30,29 @@
   }
   //******************************************************/
 
-  $con = new ConectorBD('localhost','t_general','1529');
+  /*$con = new ConectorBD('localhost','t_general','1529');
   //$response['conexion'] = $con->initConexion('transporte_db');
-  $response['conexion'] = $con->initConexion('transporte');
+  $response['conexion'] = $con->initConexion('transporte');*/
+
+  $con = new ConectorBD('localhost', 't_selector', '1555');
+  $response['conexion'] = $con->initConexion('m7-php');
+  // NO VA if ($con->initConexion('m7-php')=='OK')
 
   $response['con']="conexion en usuario agenda .data['nombre']";
+  //$response['cond']="Ddata "."data['nombre']";
 
   if ($response['conexion']=='OK') {
-    $response['con']="conexion en usuario agenda Conexión ==OK";
-    /*if($con->insertData('usuarios', $data)){
+    $response['con']="conexion ==OK";
+    if($con->insertData('usuarios', $data)){
       $response['msg']="exito en la inserción";
+        $response['con']="exito en AAAAA conexion en usuario agenda Conexión ==OK";
     }else {
       $response['msg']= "Hubo un error y los datos no han sido cargados";
-    }*/
-  /*}else {
+    }
+  }else {
     $response['msg']= "No se pudo conectar a la base de datos";
-  }*/
-}
+  }
+
   echo json_encode($response);
 
 
