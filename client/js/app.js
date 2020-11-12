@@ -3,12 +3,13 @@
 alert("apps.js");
 class EventsManager {
     constructor() {
-        //this.obtenerDataInicial()
+        this.obtenerDataInicial()
     }
 
 
     obtenerDataInicial() {
         let url = '../server/getEvents.php'
+        alert("obtenerDataInicial");
         $.ajax({
           url: url,
           dataType: "json",
@@ -16,16 +17,37 @@ class EventsManager {
           //processData: false,
           //contentType: false,
           type: 'GET',
-          success: (data) =>{
-            alert("1A data "+data)
+          success: function(data){
+            alert("1A data "+data+" msg "+data.msg);
+            alert("sql "+data.sq);
             if (data.msg=="OK") {
-              this.poblarCalendario(data.eventos)
+              alert("LEER DATOS getAgendaUser "+data.msg)
+              //this.poblarCalendario(data.eventos)
+              /*************************************/
+              /************************************/
+              $('div.primera').find('h1').append(data.nombre);
+              $.each(data.infoAgenda, function(key, value){
+                $('#table-body').append(`
+                  <tr>
+                    <td>Dato de escritura</td>
+                    <td>${value['titulo']} </td>
+                    <td>${value['start_date']}</td>
+                    <td>${value['end_date']}</td>
+                    <td>${value['start_hour']}</td>
+                    <td>${value['end_hour']}</td>
+                  </tr>
+
+                  `)
+              })
+              /***********************************/
+              /***********************************/
             }else {
-              alert("111 "+data.msg)
+              alert("111 "+data.msg);
               window.location.href = 'index.html';
             }
           },
           error: function(){
+            alert("2A data "+data);
             alert("error 1 en la comunicación con el servidor");
           }
         })
